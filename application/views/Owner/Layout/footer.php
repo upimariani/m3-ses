@@ -1,6 +1,6 @@
 <footer class="footer">
 	<div class="w-100 clearfix">
-		<span class="text-center text-sm-left d-md-inline-block">TOKO HADI - KUNINGAN</span>
+		<span class="text-center text-sm-left d-md-inline-block">Maman Makau Mandiri - KUNINGAN</span>
 	</div>
 </footer>
 </div>
@@ -50,120 +50,7 @@
 		});
 	});
 </script>
-<script>
-	<?php
-	$jml_data = $this->db->query("SELECT SUM(qty) as jumlah, id_barang, MONTH(tgl_pengajuan) FROM `pengajuan` JOIN detail_pengajuan ON pengajuan.id_pengajuan=detail_pengajuan.id_pengajuan GROUP BY MONTH(tgl_pengajuan), id_barang")->result();
-	foreach ($jml_data as $key => $value) {
-		if ($value->id_barang == '1') {
-			$beras[] = $value->jumlah;
-		} else if ($value->id_barang == '2') {
-			$gulpas[] = $value->jumlah;
-		} else if ($value->id_barang == '3') {
-			$minyak[] = $value->jumlah;
-		} else if ($value->id_barang == '4') {
-			$terigu[] = $value->jumlah;
-		} else if ($value->id_barang == '5') {
-			$telor[] = $value->jumlah;
-		} else if ($value->id_barang == '6') {
-			$susu[] = $value->jumlah;
-		}
-	}
-	?>
-	Highcharts.chart('container', {
-		chart: {
-			type: 'spline'
-		},
-		title: {
-			text: 'Grafik Permintaan Barang Supplier'
-		},
-		subtitle: {
-			text: 'Hasil dari Permintaan Barang Kepada Supplier'
-		},
-		xAxis: {
-			categories: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-				'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-			],
-			accessibility: {
-				description: 'Months of the year'
-			}
-		},
-		yAxis: {
-			title: {
-				text: 'Jumlah Permintaan'
-			},
-			labels: {
-				format: '{value}'
-			}
-		},
-		tooltip: {
-			crosshairs: true,
-			shared: true
-		},
-		plotOptions: {
-			spline: {
-				marker: {
-					radius: 4,
-					lineColor: '#666666',
-					lineWidth: 1
-				}
-			}
-		},
-		series: [{
-				name: 'Beras',
-				marker: {
-					symbol: 'square'
-				},
-				data: [<?php for ($brs = 0; $brs < sizeof($beras); $brs++) {
-							echo $beras[$brs], ',';
-						} ?>]
-			}, {
-				name: 'Gula Pasir Putih',
-				marker: {
-					symbol: 'diamond'
-				},
-				data: [<?php for ($gul = 0; $gul < sizeof($gulpas); $gul++) {
-							echo $gulpas[$gul], ',';
-						} ?>]
-			},
-			{
-				name: 'Minyak',
-				marker: {
-					symbol: 'circle'
-				},
-				data: [<?php for ($min = 0; $min < sizeof($minyak); $min++) {
-							echo $minyak[$min], ',';
-						} ?>]
-			},
-			{
-				name: 'Terigu Segitiga',
-				marker: {
-					symbol: 'triangle'
-				},
-				data: [<?php for ($ter = 0; $ter < sizeof($terigu); $ter++) {
-							echo $terigu[$ter], ',';
-						} ?>]
-			},
-			{
-				name: 'Telor',
-				marker: {
-					symbol: 'cross'
-				},
-				data: [<?php for ($tel = 0; $tel < sizeof($telor); $tel++) {
-							echo $telor[$tel], ',';
-						} ?>]
-			},
-			{
-				name: 'Susu',
-				marker: {
-					symbol: 'plus'
-				},
-				data: [<?php for ($sus = 0; $sus < sizeof($susu); $sus++) {
-							echo $susu[$sus], ',';
-						} ?>]
-			}
-		]
-	});
-</script>
+
 </body>
 
 </html>

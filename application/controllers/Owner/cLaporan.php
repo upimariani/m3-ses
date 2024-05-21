@@ -32,18 +32,7 @@ class cLaporan extends CI_Controller
 	public function cetak_laporan()
 	{
 		$bulan = $this->input->post('periode');
-		if ($bulan <= '12') {
-			$bulan = $bulan;
-			$tahun = '2023';
-		} else {
-			if ($bulan == '13') {
-				$bulan = '1';
-				$tahun = '2024';
-			} else {
-				$bulan = '2';
-				$tahun = '2024';
-			}
-		}
+		$tahun = $this->input->post('tahun');
 
 		// memanggil library FPDF
 		require('asset/fpdf/fpdf.php');
@@ -53,12 +42,12 @@ class cLaporan extends CI_Controller
 		$pdf->AddPage();
 
 		$pdf->SetFont('Times', 'B', 14);
-		$pdf->Cell(200, 40, 'LAPORAN PENGAJUAN BARANG SUPPLIER', 0, 0, 'C');
+		$pdf->Cell(200, 40, 'LAPORAN TRANSAKSI BAHAN BAKU SUPPLIER', 0, 0, 'C');
 		$pdf->SetLineWidth(0);
 		$pdf->Cell(10, 30, '', 0, 1);
 		$pdf->SetFont('Times', 'B', 9);
 		$pdf->Cell(30, 7, 'Id Pengajuan', 1, 0, 'C');
-		$pdf->Cell(30, 7, 'Tanggal Pengajuan', 1, 0, 'C');
+		$pdf->Cell(30, 7, 'Tanggal Transaksi', 1, 0, 'C');
 		$pdf->Cell(50, 7, 'Nama Barang', 1, 0, 'C');
 		$pdf->Cell(30, 7, 'Harga', 1, 0, 'C');
 		$pdf->Cell(20, 7, 'Quantity', 1, 0, 'C');
@@ -74,9 +63,9 @@ class cLaporan extends CI_Controller
 		$total = 0;
 		foreach ($data as $key => $value) {
 			$total += ($value->harga * $value->qty);
-			$pdf->Cell(30, 7, $value->id_pengajuan, 1, 0, 'C');
-			$pdf->Cell(30, 7, $value->tgl_pengajuan, 1, 0, 'C');
-			$pdf->Cell(50, 7, $value->nama_barang, 1, 0, 'C');
+			$pdf->Cell(30, 7, $value->id_transaksi, 1, 0, 'C');
+			$pdf->Cell(30, 7, $value->tanggal, 1, 0, 'C');
+			$pdf->Cell(50, 7, $value->nama_bb, 1, 0, 'C');
 			$pdf->Cell(30, 7, 'Rp.' . number_format($value->harga), 1, 0, 'C');
 			$pdf->Cell(20, 7, $value->qty, 1, 0, 'C');
 			$pdf->Cell(30, 7, 'Rp. ' . number_format($value->harga * $value->qty), 1, 1, 'C');

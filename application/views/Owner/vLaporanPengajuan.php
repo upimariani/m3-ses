@@ -55,22 +55,25 @@
 								</div>
 
 								<div class="col-lg-12 mt-3">
-									<select class="form-control" name="periode">
+									<select class="form-control" name="periode" required>
 										<option value="">---Pilih Periode---</option>
-										<option value="1">Januari 2023</option>
-										<option value="2">Februari 2023</option>
-										<option value="3">Maret 2023</option>
-										<option value="4">April 2023</option>
-										<option value="5">Mei 2023</option>
-										<option value="6">Juni 2023</option>
-										<option value="7">Juli 2023</option>
-										<option value="8">Agustus 2023</option>
-										<option value="9">September 2023</option>
-										<option value="10">Oktober 2023</option>
-										<option value="11">November 2023</option>
-										<option value="12">Desember 2023</option>
-										<option value="13">Januari 2024</option>
-										<option value="14">Februari 2024</option>
+										<option value="1">Januari</option>
+										<option value="2">Februari</option>
+										<option value="3">Maret</option>
+										<option value="4">April</option>
+										<option value="5">Mei</option>
+										<option value="6">Juni</option>
+										<option value="7">Juli</option>
+										<option value="8">Agustus</option>
+										<option value="9">September</option>
+										<option value="10">Oktober</option>
+										<option value="11">November</option>
+										<option value="12">Desember</option>
+									</select>
+									<select class="form-control mt-3" name="tahun" required>
+										<option value="">---Pilih Tahun---</option>
+										<option value="2023">2023</option>
+										<option value="2024">2024</option>
 									</select>
 									<button type="submit" class="btn btn-warning mt-3">Cetak Laporan</button>
 								</div>
@@ -101,33 +104,33 @@
 										<?php
 										$no = 1;
 										foreach ($transaksi as $key => $value) {
-											if ($value->stat_pengajuan == '4') {
+											if ($value->status == '4') {
 
 										?>
 												<tr>
 													<td><?= $no++ ?></td>
-													<td><?= $value->nama_supp ?></td>
-													<td><?= $value->tgl_pengajuan ?></td>
-													<td>Rp. <?= number_format($value->total_pengajuan)  ?></td>
+													<td><?= $value->nama ?></td>
+													<td><?= $value->tanggal ?></td>
+													<td>Rp. <?= number_format($value->total)  ?></td>
 
 													<td><?php
-														if ($value->stat_pengajuan == '0') {
+														if ($value->status == '0') {
 														?>
 															<span class="badge badge-danger">Belum Bayar</span>
 														<?php
-														} else if ($value->stat_pengajuan == '1') {
+														} else if ($value->status == '1') {
 														?>
 															<span class="badge badge-warning">Menunggu Konfirmasi</span>
 														<?php
-														} else if ($value->stat_pengajuan == '2') {
+														} else if ($value->status == '2') {
 														?>
 															<span class="badge badge-info">Pesanan Diproses</span>
 														<?php
-														} else if ($value->stat_pengajuan == '3') {
+														} else if ($value->status == '3') {
 														?>
 															<span class="badge badge-primary">Pesanan Dikirim</span>
 														<?php
-														} else if ($value->stat_pengajuan == '4') {
+														} else if ($value->status == '4') {
 														?>
 															<span class="badge badge-success">Selesai</span>
 														<?php
@@ -135,7 +138,7 @@
 														?>
 													</td>
 
-													<td class="text-center"> <a href="<?= base_url('Owner/cLaporan/detail_transaksi/' . $value->id_pengajuan) ?>" class="btn btn-warning">
+													<td class="text-center"> <a href="<?= base_url('Owner/cLaporan/detail_transaksi/' . $value->id_transaksi) ?>" class="btn btn-warning">
 															<i class="fas fa-info"></i> Detail Transaksi
 														</a> </td>
 												</tr>

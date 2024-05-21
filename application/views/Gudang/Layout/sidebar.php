@@ -47,6 +47,11 @@
 													}  ?>">
 								<a href="<?= base_url('Gudang/cDashboard') ?>"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
 							</div>
+							<div class="nav-item <?php if ($this->uri->segment(1) == 'Gudang' && $this->uri->segment(2) == 'cBarang') {
+														echo 'active';
+													}  ?>">
+								<a href="<?= base_url('Gudang/cBarang') ?>"><i class="ik ik-tag"></i><span>Bahan Baku</span></a>
+							</div>
 
 							<div class="nav-lavel">TRANSAKSI</div>
 
@@ -64,13 +69,6 @@
 													}  ?>">
 
 								<a href="<?= base_url('Gudang/cBBKeluar') ?>"><i class="ik ik-tag"></i><span>Bahan Baku Keluar</span></a>
-							</div>
-							<div class="nav-lavel">ANALISIS</div>
-
-							<div class="nav-item <?php if ($this->uri->segment(1) == 'Gudang' && $this->uri->segment(2) == 'cPeramalan') {
-														echo 'active';
-													}  ?>">
-								<a href="<?= base_url('Gudang/cPeramalan') ?>"><i class="ik ik-pie-chart"></i><span>Forecasting</span></a>
 							</div>
 
 							<div class="nav-item">

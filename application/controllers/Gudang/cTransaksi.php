@@ -88,12 +88,9 @@ class cTransaksi extends CI_Controller
 			'tanggal' => date('Y-m-d'),
 			'total' => $this->cart->total(),
 			'pembayaran' => '0',
-			'status' => '0'
+			'status' => '9'
 		);
 		$this->mTransaksi->insert_pengajuan($data);
-
-
-
 
 		//insert detail pengajuan
 		$id = $this->db->query("SELECT MAX(id_transaksi) as id_transaksi FROM `transaksi`")->row();

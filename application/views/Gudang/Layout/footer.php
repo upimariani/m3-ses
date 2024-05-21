@@ -1,6 +1,6 @@
 <footer class="footer">
 	<div class="w-100 clearfix">
-		<span class="text-center text-sm-left d-md-inline-block">TOKO HADI - KUNINGAN</span>
+		<span class="text-center text-sm-left d-md-inline-block">Maman Makau Mandiri - KUNINGAN</span>
 	</div>
 </footer>
 </div>

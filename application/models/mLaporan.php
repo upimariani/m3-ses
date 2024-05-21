@@ -5,7 +5,7 @@ class mLaporan extends CI_Model
 {
 	public function laporan_periode($bulan, $tahun)
 	{
-		return $this->db->query("SELECT * FROM `pengajuan` JOIN detail_pengajuan ON pengajuan.id_pengajuan=detail_pengajuan.id_pengajuan JOIN barang ON barang.id_barang=detail_pengajuan.id_barang WHERE MONTH(tgl_pengajuan)='" . $bulan . "' AND YEAR(tgl_pengajuan)='" . $tahun . "'")->result();
+		return $this->db->query("SELECT * FROM `transaksi` JOIN detail_transaksi ON transaksi.id_transaksi=detail_transaksi.id_transaksi JOIN bahan_baku ON bahan_baku.id_bb=detail_transaksi.id_bb WHERE MONTH(tanggal)='" . $bulan . "' AND YEAR(tanggal)='" . $tahun . "'")->result();
 	}
 }
 

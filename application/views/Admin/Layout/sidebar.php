@@ -60,8 +60,13 @@
 													}  ?>">
 								<a href="<?= base_url('Admin/cBarang') ?>"><i class="ik ik-tag"></i><span>Bahan Baku</span></a>
 							</div>
+							<div class="nav-lavel">ANALISIS</div>
 
-
+							<div class="nav-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cPeramalan') {
+														echo 'active';
+													}  ?>">
+								<a href="<?= base_url('Admin/cPeramalan') ?>"><i class="ik ik-pie-chart"></i><span>Forecasting</span></a>
+							</div>
 
 							<div class="nav-item">
 								<a href="<?= base_url('cLogin/logout') ?>"><i class="ik ik-power"></i><span>LogOut</span></a>

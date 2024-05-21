@@ -42,7 +42,7 @@
 						<div class="row">
 							<div class="col-12">
 								<h4>
-									<i class="fas fa-globe"></i> Invoice Pengajuan Bahan Baku
+									<i class="fas fa-globe"></i> Invoice Transaksi Bahan Baku
 									<small class="float-right">Date: <?= date('Y-m-d') ?></small>
 								</h4>
 							</div>
@@ -53,7 +53,7 @@
 							<div class="col-sm-4 invoice-col">
 								From
 								<address>
-									<strong>Admin, Inc.</strong><br>
+									<strong>Gudang</strong><br>
 
 								</address>
 							</div>
@@ -84,7 +84,7 @@
 											<tr>
 												<td><?= $no++ ?></td>
 												<td><?= $value->qty ?></td>
-												<td><?= $value->nama_barang ?></td>
+												<td><?= $value->nama_bb ?></td>
 												<td>Rp. <?= number_format($value->harga)  ?></td>
 												<td>Rp. <?= number_format($value->harga * $value->qty)  ?></td>
 											</tr>
@@ -103,23 +103,7 @@
 						<div class="row">
 							<!-- accepted payments column -->
 							<div class="col-6">
-								<?php
-								if ($transaksi['transaksi']->stat_pembayaran == '0') {
-								?>
-									<?php echo form_open_multipart('Admin/cTransaksi/bayar/' . $transaksi['transaksi']->id_pengajuan); ?>
-									<label>Pembayaran</label>
-									<input type="file" name="bayar" class="form-control">
-									<button type="submit" class="btn btn-success mt-3"><i class="far fa-credit-card"></i> Submit
-										Payment
-									</button>
-									</form>
-								<?php
-								} else {
-								?>
-									<img class="mb-5" style="width: 150px;" src="<?= base_url('asset/pembayaran/' . $transaksi['transaksi']->bukti_payment)  ?>">
-								<?php
-								}
-								?>
+
 
 							</div>
 							<!-- /.col -->
@@ -129,7 +113,11 @@
 									<table class="table">
 										<tr>
 											<th>Total:</th>
-											<td>Rp. <?= number_format($transaksi['transaksi']->total_pengajuan)  ?></td>
+											<td>Rp. <?= number_format($transaksi['transaksi']->total)  ?></td>
+										</tr>
+										<tr>
+											<td><a href="<?= base_url('Owner/cTransaksi/approve/' . $transaksi['transaksi']->id_transaksi) ?>" class="btn btn-success">Approve Pesanan</a></td>
+											<td></td>
 										</tr>
 									</table>
 								</div>
@@ -139,19 +127,7 @@
 						<!-- /.row -->
 
 						<!-- this row will not appear when printing -->
-						<div class="row no-print">
-							<div class="col-12">
 
-								<?php
-								if ($transaksi['transaksi']->stat_pengajuan == '3') {
-								?>
-									<a href="<?= base_url('Admin/cTransaksi/pesanan_diterima/' . $transaksi['transaksi']->id_pengajuan) ?>" class="mt-5 btn btn-success"><i class="fas fa-pen-alt"></i> Konfirmasi Pesanan Diterima</a>
-
-								<?php
-								}
-								?>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>

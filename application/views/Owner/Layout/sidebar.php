@@ -48,7 +48,7 @@
 								<a href="<?= base_url('Owner/cDashboard') ?>"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
 							</div>
 
-							
+
 
 
 							<div class="nav-lavel">Laporan</div>
@@ -59,7 +59,13 @@
 
 								<a href="<?= base_url('Owner/cLaporan') ?>"><i class="ik ik-shopping-cart"></i><span>Laporan Transaksi</span></a>
 							</div>
+							<div class="nav-lavel">TRANSAKSI</div>
 
+							<div class="nav-item <?php if ($this->uri->segment(1) == 'Owner' && $this->uri->segment(2) == 'cTransaksi') {
+														echo 'active';
+													}  ?>">
+								<a href="<?= base_url('Owner/cTransaksi') ?>"><i class="ik ik-tag"></i><span>Transaksi</span></a>
+							</div>
 							<div class="nav-item">
 								<a href="<?= base_url('cLogin/logout') ?>"><i class="ik ik-power"></i><span>LogOut</span></a>
 							</div>
