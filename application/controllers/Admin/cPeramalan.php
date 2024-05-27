@@ -40,7 +40,8 @@ class cPeramalan extends CI_Controller
 						'bulan' => $value->periode,
 						'tahun' => $value->tahun,
 						'aktual' => $value->jumlah,
-						'forecasting' => $value->jumlah
+						'forecasting' => $value->jumlah,
+						'alpha' => 0.1
 					);
 					$this->db->insert('peramalan', $data);
 				} else {
@@ -57,7 +58,8 @@ class cPeramalan extends CI_Controller
 						'bulan' => $value->periode,
 						'tahun' => $value->tahun,
 						'aktual' => $value->jumlah,
-						'forecasting' => $ft
+						'forecasting' => $ft,
+						'alpha' => 0.1
 					);
 					$this->db->insert('peramalan', $data);
 				}
@@ -65,6 +67,37 @@ class cPeramalan extends CI_Controller
 			}
 		}
 
+		$data = array(
+			'view_analisis' => $this->mPeramalan->view_peramalan($id_bb),
+			'periode' => $this->mPeramalan->periode(),
+			'id_bb' => $id_bb
+		);
+		$this->load->view('Admin/Layout/head');
+		$this->load->view('Admin/Layout/sidebar');
+		$this->load->view('Owner/vViewPeramalan', $data);
+		$this->load->view('Admin/Layout/footer');
+	}
+	public function perbaharui_alpha($id_bb)
+	{
+		$alpha = $this->input->post('alpha');
+		$data = $this->db->query("SELECT * FROM `peramalan` WHERE id_bb='" . $id_bb . "'")->result();
+		foreach ($data as $key => $value) {
+			if ($value->bulan == '1') {
+				$forecasting = $value->forecasting;
+			} else {
+				$id_peramalan = $value->id_peramalan - 1;
+				$dt_var = $this->db->query("SELECT * FROM `peramalan` WHERE id_peramalan='" . $id_peramalan . "'")->row();
+				$ft = round((0.1 * $dt_var->forecasting) + ((1 - $alpha) * $dt_var->aktual));
+				$forecasting = $ft;
+			}
+			$dt_db = array(
+				'forecasting' => $forecasting,
+				'alpha' => $alpha
+			);
+			$this->db->where('id_peramalan', $value->id_peramalan);
+			$this->db->update('peramalan', $dt_db);
+		}
+		$this->session->set_flashdata('success', 'Data peramalan berhasil diperbaharui');
 		$data = array(
 			'view_analisis' => $this->mPeramalan->view_peramalan($id_bb),
 			'periode' => $this->mPeramalan->periode(),

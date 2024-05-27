@@ -56,6 +56,7 @@
 									<th class="d-none d-md-table-cell">Nama Bahan Baku</th>
 									<th class="d-none d-md-table-cell">Keterangan</th>
 									<th class="d-none d-md-table-cell">Harga Barang</th>
+									<th class="d-none d-md-table-cell">Stok Tersedia</th>
 									<th class="d-none d-md-table-cell"></th>
 
 								</tr>
@@ -66,6 +67,11 @@
 										<td class="d-none d-md-table-cell"><?= $value->nama_bb ?></td>
 										<td class="d-none d-md-table-cell"><?= $value->keterangan ?></td>
 										<td class="d-none d-md-table-cell">Rp. <?= number_format($value->harga)  ?></td>
+										<!-- menampilkan stok -->
+										<?php
+										$stok = $this->db->query("SELECT SUM(sisa) as stok FROM `detail_transaksi` WHERE id_bb='" . $value->id_bb . "'")->row();
+										?>
+										<td class="d-none d-md-table-cell"><?= $stok->stok ?></td>
 										<td class="text-center">
 											<div class="table-actions">
 												<a href="<?= base_url('Gudang/cBarang/update/' . $value->id_bb) ?>"><i class="ik ik-edit-2"></i></a>

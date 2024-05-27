@@ -55,11 +55,11 @@
 													}  ?>">
 								<a href="<?= base_url('Admin/cUser') ?>"><i class="ik ik-user-plus"></i><span>User</span></a>
 							</div>
-							<div class="nav-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cBarang') {
-														echo 'active';
-													}  ?>">
+							<!-- <div class="nav-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cBarang') {
+															echo 'active';
+														}  ?>">
 								<a href="<?= base_url('Admin/cBarang') ?>"><i class="ik ik-tag"></i><span>Bahan Baku</span></a>
-							</div>
+							</div> -->
 							<div class="nav-lavel">ANALISIS</div>
 
 							<div class="nav-item <?php if ($this->uri->segment(1) == 'Admin' && $this->uri->segment(2) == 'cPeramalan') {
