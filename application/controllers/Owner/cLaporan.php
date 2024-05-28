@@ -61,8 +61,10 @@ class cLaporan extends CI_Controller
 
 		$data = $this->mLaporan->laporan_periode($bulan, $tahun);
 		$total = 0;
+		$ttran = 0;
 		foreach ($data as $key => $value) {
 			$total += ($value->harga * $value->qty);
+			$ttran += 1;
 			$pdf->Cell(30, 7, $value->id_transaksi, 1, 0, 'C');
 			$pdf->Cell(30, 7, $value->tanggal, 1, 0, 'C');
 			$pdf->Cell(50, 7, $value->nama_bb, 1, 0, 'C');
@@ -72,8 +74,11 @@ class cLaporan extends CI_Controller
 		}
 		$pdf->SetFont('Times', 'B', 12);
 		$pdf->Cell(110, 7, '', 0, 0, 'C');
-		$pdf->Cell(50, 7, 'Total', 0, 0, 'C');
-		$pdf->Cell(30, 7, 'Rp.' . number_format($total), 0, 0, 'C');
+		$pdf->Cell(50, 7, 'Total Perbulan', 0, 0, 'C');
+		$pdf->Cell(30, 7, 'Rp.' . number_format($total), 0, 1, 'C');
+		$pdf->Cell(110, 7, '', 0, 0, 'C');
+		$pdf->Cell(50, 7, 'Jumlah Transaksi', 0, 0, 'C');
+		$pdf->Cell(30, 7, number_format($ttran), 0, 0, 'C');
 		$pdf->Output();
 	}
 }
