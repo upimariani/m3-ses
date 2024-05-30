@@ -87,7 +87,7 @@ class cPeramalan extends CI_Controller
 			} else {
 				$id_peramalan = $value->id_peramalan - 1;
 				$dt_var = $this->db->query("SELECT * FROM `peramalan` WHERE id_peramalan='" . $id_peramalan . "'")->row();
-				$ft = round((0.1 * $dt_var->forecasting) + ((1 - $alpha) * $dt_var->aktual));
+				$ft = round(($alpha * $dt_var->forecasting) + ((1 - $alpha) * $dt_var->aktual));
 				$forecasting = $ft;
 			}
 			$dt_db = array(
