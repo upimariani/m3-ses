@@ -49,8 +49,9 @@ class cPeramalan extends CI_Controller
 					$dt_peramalan_sebelumnya = $this->db->query("SELECT * FROM `peramalan` WHERE id_bb='" . $id_bb . "' AND bulan='" . $per . "' AND tahun='" . $value->tahun . "';")->result();
 					foreach ($dt_peramalan_sebelumnya as $key => $item) {
 						$forecasting = $item->forecasting;
+						$aktual = $item->aktual;
 					}
-					$ft = round((0.1 * $forecasting) + ((1 - 0.1) * $value->jumlah));
+					$ft = round((0.1 * $aktual) + ((1 - 0.1) * $forecasting));
 					// echo $ft;
 
 					$data = array(
@@ -87,7 +88,7 @@ class cPeramalan extends CI_Controller
 			} else {
 				$id_peramalan = $value->id_peramalan - 1;
 				$dt_var = $this->db->query("SELECT * FROM `peramalan` WHERE id_peramalan='" . $id_peramalan . "'")->row();
-				$ft = round(($alpha * $dt_var->forecasting) + ((1 - $alpha) * $dt_var->aktual));
+				$ft = round(($alpha * $dt_var->aktual) + ((1 - $alpha) * $dt_var->forecasting));
 				$forecasting = $ft;
 			}
 			$dt_db = array(

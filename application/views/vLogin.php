@@ -32,7 +32,7 @@
 
 			<div class="authentication-form mx-auto">
 				<div class="logo-centered">
-					<a href="<?= base_url('asset/themekit-master/') ?>index.html"><img src="<?= base_url('asset/themekit-master/') ?>src/img/brand.svg" alt=""></a>
+					<a href="<?= base_url('asset/themekit-master/') ?>index.html"><img style="width: 200px;" src="<?= base_url('asset/1.png') ?>" alt=""></a>
 				</div>
 				<h3>Maman Makau Mandiri</h3>
 				<p>Happy to see you again!</p>

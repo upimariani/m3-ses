@@ -88,7 +88,7 @@ class cTransaksi extends CI_Controller
 			'tanggal' => date('Y-m-d'),
 			'total' => $this->cart->total(),
 			'pembayaran' => '0',
-			'status' => '9'
+			'status' => '0'
 		);
 		$this->mTransaksi->insert_pengajuan($data);
 

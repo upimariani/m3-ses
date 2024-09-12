@@ -177,7 +177,7 @@
 									<td><?= $tpers ?></td>
 									<td></td>
 									<td><strong>MAPE</strong></td>
-									<td><?= abs(round($mape / 10, 2)) ?>%</td>
+									<td><?= abs(round($mape / 17, 2)) ?>%</td>
 								</tr>
 							</tfoot>
 
@@ -187,7 +187,7 @@
 					<div class="card-footer">
 						<?php
 						$dt = $this->db->query("SELECT * FROM `peramalan` WHERE id_bb='" . $id_bb . "' GROUP BY id_peramalan DESC LIMIT 1")->row();
-						$ft = round((0.1 * $dt->forecasting) + ((1 - 0.1) * $dt->aktual));
+						$ft = round((0.1 * $dt->aktual) + ((1 - 0.1) * $dt->forecasting));
 
 						//mengambil data bulan
 						$bulan = $this->db->query("SELECT MAX(bulan)+1 as bulan FROM `peramalan` WHERE id_bb='1' AND tahun='2024'")->row();

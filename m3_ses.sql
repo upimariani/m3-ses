@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2024 at 03:08 AM
+-- Generation Time: Jun 13, 2024 at 04:29 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -42,11 +42,11 @@ CREATE TABLE `bahan_baku` (
 --
 
 INSERT INTO `bahan_baku` (`id_bb`, `id_user`, `nama_bb`, `keterangan`, `harga`, `gambar`) VALUES
-(1, 2, 'Bahan Baku A', 'pcs', '100000', 'bb.jpg'),
-(2, 2, 'Bahan Baku B', 'pcs', '100000', 'bb.jpg'),
-(3, 2, 'Bahan Baku C', 'pcs', '100000', 'bb.jpg'),
-(4, 2, 'Bahan Baku D', 'pcs', '100000', 'bb.jpg'),
-(5, 2, 'Bahan Baku E', 'pcs', '100000', 'bb.jpg');
+(1, 2, 'Mahoni', 'meteran', '50000', 'bb.jpg'),
+(2, 2, 'Jati', 'satuan', '60000', 'bb.jpg'),
+(3, 2, 'Papan Mahoni', 'meteran', '25000', 'bb.jpg'),
+(4, 2, 'Papan Jati Super', 'meteran', '100000', 'bb.jpg'),
+(5, 2, 'Rawa', 'meteran', '40000', 'bb.jpg');
 
 -- --------------------------------------------------------
 
@@ -569,7 +569,38 @@ INSERT INTO `detail_transaksi` (`id_detail`, `id_transaksi`, `id_bb`, `qty`, `si
 (480, 480, 3, 25, 0),
 (481, 481, 1, 17, 0),
 (482, 482, 2, 1, 0),
-(483, 483, 1, 14, 0);
+(483, 483, 1, 14, 0),
+(484, 484, 5, 13, 0),
+(485, 485, 2, 14, 0),
+(486, 486, 5, 9, 0),
+(487, 487, 2, 8, 0),
+(488, 488, 5, 13, 0),
+(489, 489, 2, 15, 0),
+(490, 490, 3, 14, 0),
+(491, 491, 5, 15, 0),
+(492, 492, 4, 8, 0),
+(493, 493, 1, 15, 0),
+(494, 494, 2, 18, 0),
+(495, 495, 4, 9, 0),
+(496, 496, 5, 19, 0),
+(497, 497, 3, 16, 0),
+(498, 498, 2, 19, 0),
+(499, 499, 1, 10, 0),
+(500, 500, 2, 6, 0),
+(501, 501, 2, 13, 0),
+(502, 502, 2, 15, 0),
+(503, 503, 5, 15, 0),
+(504, 504, 3, 8, 0),
+(505, 505, 5, 20, 0),
+(506, 506, 4, 14, 0),
+(507, 507, 5, 17, 0),
+(508, 508, 2, 18, 0),
+(509, 509, 3, 9, 0),
+(510, 510, 3, 14, 0),
+(511, 511, 4, 17, 0),
+(512, 512, 5, 11, 0),
+(513, 513, 1, 10, 0),
+(514, 514, 1, 11, 0);
 
 -- --------------------------------------------------------
 
@@ -592,38 +623,23 @@ CREATE TABLE `peramalan` (
 --
 
 INSERT INTO `peramalan` (`id_peramalan`, `id_bb`, `bulan`, `tahun`, `aktual`, `forecasting`, `alpha`) VALUES
-(1, 1, 1, 2023, 83, 83, 0.2),
-(2, 1, 2, 2023, 61, 75, 0.2),
-(3, 1, 3, 2023, 48, 56, 0.2),
-(4, 1, 4, 2023, 123, 44, 0.2),
-(5, 1, 5, 2023, 100, 103, 0.2),
-(6, 1, 6, 2023, 144, 90, 0.2),
-(7, 1, 7, 2023, 115, 124, 0.2),
-(8, 1, 8, 2023, 34, 104, 0.2),
-(9, 1, 9, 2023, 19, 38, 0.2),
-(10, 1, 10, 2023, 116, 19, 0.2),
-(11, 1, 11, 2023, 132, 95, 0.2),
-(12, 1, 12, 2023, 57, 115, 0.2),
-(13, 1, 1, 2024, 133, 133, 0.2),
-(14, 1, 2, 2024, 82, 120, 0.2),
-(15, 1, 3, 2024, 88, 78, 0.2),
-(16, 1, 4, 2024, 55, 78, 0.2),
-(17, 2, 1, 2023, 43, 43, 0.1),
-(18, 2, 2, 2023, 73, 70, 0.1),
-(19, 2, 3, 2023, 74, 74, 0.1),
-(20, 2, 4, 2023, 86, 85, 0.1),
-(21, 2, 5, 2023, 69, 71, 0.1),
-(22, 2, 6, 2023, 44, 47, 0.1),
-(23, 2, 7, 2023, 17, 20, 0.1),
-(24, 2, 8, 2023, 47, 44, 0.1),
-(25, 2, 9, 2023, 62, 60, 0.1),
-(26, 2, 10, 2023, 100, 96, 0.1),
-(27, 2, 11, 2023, 21, 29, 0.1),
-(28, 2, 12, 2023, 31, 31, 0.1),
-(29, 2, 1, 2024, 109, 101, 0.1),
-(30, 2, 2, 2024, 56, 61, 0.1),
-(31, 2, 3, 2024, 63, 63, 0.1),
-(32, 2, 4, 2024, 63, 63, 0.1);
+(1, 1, 1, 2023, 83, 83, 0.1),
+(2, 1, 2, 2023, 61, 83, 0.1),
+(3, 1, 3, 2023, 48, 81, 0.1),
+(4, 1, 4, 2023, 123, 78, 0.1),
+(5, 1, 5, 2023, 100, 83, 0.1),
+(6, 1, 6, 2023, 144, 85, 0.1),
+(7, 1, 7, 2023, 115, 91, 0.1),
+(8, 1, 8, 2023, 34, 93, 0.1),
+(9, 1, 9, 2023, 19, 87, 0.1),
+(10, 1, 10, 2023, 116, 80, 0.1),
+(11, 1, 11, 2023, 132, 84, 0.1),
+(12, 1, 12, 2023, 57, 89, 0.1),
+(13, 1, 1, 2024, 133, 86, 0.1),
+(14, 1, 2, 2024, 82, 91, 0.1),
+(15, 1, 3, 2024, 88, 90, 0.1),
+(16, 1, 4, 2024, 55, 90, 0.1),
+(17, 1, 5, 2024, 46, 87, 0.1);
 
 -- --------------------------------------------------------
 
@@ -1127,7 +1143,38 @@ INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `tanggal`, `total`, `pembaya
 (480, 2, '2024-04-24', '2500000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
 (481, 2, '2024-04-25', '1700000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
 (482, 2, '2024-04-26', '100000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
-(483, 2, '2024-04-27', '1400000', '0', 0);
+(483, 2, '2024-04-27', '1400000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(484, 2, '2024-05-01', '13000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(485, 2, '2024-05-02', '14000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(486, 2, '2024-05-03', '9000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(487, 2, '2024-05-04', '8000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(488, 2, '2024-05-05', '13000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(489, 2, '2024-05-06', '15000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(490, 2, '2024-05-07', '14000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(491, 2, '2024-05-08', '15000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(492, 2, '2024-05-09', '8000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(493, 2, '2024-05-10', '15000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(494, 2, '2024-05-11', '18000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(495, 2, '2024-05-12', '9000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(496, 2, '2024-05-13', '19000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(497, 2, '2024-05-14', '16000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(498, 2, '2024-05-15', '19000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(499, 2, '2024-05-16', '10000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(500, 2, '2024-05-17', '6000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(501, 2, '2024-05-18', '13000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(502, 2, '2024-05-19', '15000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(503, 2, '2024-05-20', '15000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(504, 2, '2024-05-21', '8000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(505, 2, '2024-05-22', '20000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(506, 2, '2024-05-23', '14000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(507, 2, '2024-05-24', '17000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(508, 2, '2024-05-25', '18000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(509, 2, '2024-05-26', '9000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(510, 2, '2024-05-27', '14000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(511, 2, '2024-05-28', '17000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(512, 2, '2024-05-29', '11000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(513, 2, '2024-05-30', '10000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4),
+(514, 2, '2024-05-31', '11000000', 'Ini-Dia-Bukti-Transfer-Mandiri-Dari-ATM-mBanking-d...', 4);
 
 -- --------------------------------------------------------
 
@@ -1153,7 +1200,8 @@ INSERT INTO `user` (`id_user`, `nama`, `alamat`, `no_hp`, `username`, `password`
 (1, 'Admin', 'Kuningan', '089987654323', 'admin', 'admin', 1),
 (2, 'Supplier 1', 'Kuningan', '089987654543', 'supplier1', 'supplier1', 2),
 (3, 'Gudang', 'Kuningan', '089987654543', 'gudang', 'gudang', 4),
-(4, 'Pemilik', 'Kuningan', '08512232123', 'pemilik', 'pemilik', 3);
+(4, 'Pemilik', 'Kuningan', '08512232123', 'pemilik', 'pemilik', 3),
+(5, 'Supplier 2', 'Kuningan, Jawa Barat', '087789871232', 'supplier2', 'supplier2', 2);
 
 --
 -- Indexes for dumped tables
@@ -1215,25 +1263,25 @@ ALTER TABLE `bb_keluar`
 -- AUTO_INCREMENT for table `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=484;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=517;
 
 --
 -- AUTO_INCREMENT for table `peramalan`
 --
 ALTER TABLE `peramalan`
-  MODIFY `id_peramalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_peramalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=484;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=516;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
